@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/insignia" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="D1.png" type="image/png">
+    <title>WorkPal - Encuentra tu lugar</title>
+    <style>
+        /* Reset y estilos generales */
+        @import url('https://fonts.cdnfonts.com/css/insignia');       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Insignia', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        /* Header */
+        header {
+            background-color: #FFB800; /* Amarillo */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #fff;
+        }
+        
+        /* Search Section */
+        .search-section {
+            padding: 2rem;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #FFB800;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .search-bar button {
+            padding: 1rem 1.5rem;
+            background-color: #FFB800;
+            color: #000;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .search-bar button:hover {
+            background-color: #000;
+            color: #FFB800;
+        }
+        
+        /* Filter Section */
+        .filter-section {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .filter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+        }
+        
+        .filter-group label {
+            margin-right: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .filter-group select, .filter-group input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        /* Spinner */
+        .spinner-container {
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #FFB800;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Projects Grid */
+        .projects-section {
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+        
+        .projects-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        
+        .project-image {
+            height: 150px;
+            background-color: #FFB800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 3rem;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            color: #000;
+        }
+        
+        .project-info p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .project-meta {
+            display: flex;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .project-meta span {
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-meta i {
+            margin-right: 0.3rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #FFB800;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #FFB800;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .filter-group {
+                margin-bottom: 0.5rem;
+                width: 100%;
+            }
+            
+            .filter-group select, .filter-group input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="B1.png" width="250" height="90"></div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="QuiénesSomos.html">¿Quiénes somos?</a></li>
+                <li><a href="Contactos.html">Contactos</a></li>
+                <li><a href="TusProyectos.html">Tus Proyectos</a></li>
+                <li><a href="InicioSesión.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="search-section">
+        <div class="search-container">
+            <h2>Buscar Proyectos</h2>
+            <br>
+            <p>Encuentra el proyecto perfecto para tus habilidades e intereses</p>
+            <br>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar proyectos por nombre, habilidades o palabras clave...">
+                <button><i class="fas fa-search"></i> Buscar</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="filter-section">
+        <div class="filter-container">
+            <div class="filter-group">
+                <label for="area">Área:</label>
+                <select id="area">
+                    <option value="">Todas las áreas</option>
+                    <option value="tecnologia">Tecnología</option>
+                    <option value="diseno">Diseño</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="negocios">Negocios</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="occupation">Ocupación:</label>
+                <select id="occupation">
+                    <option value="">Cualquier ocupación</option>
+                    <option value="desarrollador">Desarrollador</option>
+                    <option value="disenador">Diseñador</option>
+                    <option value="marketer">Especialista en Marketing</option>
+                    <option value="manager">Gerente de Proyecto</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="location">Ubicación:</label>
+                <select id="location">
+                    <option value="">Cualquier ubicación</option>
+                    <option value="local">Local</option>
+                    <option value="nacional">Nacional</option>
+                    <option value="internacional">Internacional</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="duration">Duración:</label>
+                <select id="duration">
+                    <option value="">Cualquier duración</option>
+                    <option value="corto">Corto plazo (<1 mes)</option>
+                    <option value="medio">Mediano plazo (1-3 meses)</option>
+                    <option value="largo">Largo plazo (>3 meses)</option>
+                </select>
+            </div>
+        </div>
+    </section>
+    
+    <div class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+    
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="projects-grid">
+                <!-- Proyecto 1 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Desarrollo App Móvil</h3>
+                        <p>Buscamos desarrolladores para crear una aplicación innovadora de gestión de tareas con funcionalidades avanzadas.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-laptop-code"></i> Tecnología</span>
+                            <span><i class="fas fa-globe"></i> Remoto</span>
+                            <span><i class="fas fa-clock"></i> 2 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Rediseño de Marca</h3>
+                        <p>Necesitamos diseñadores gráficos para refrescar la identidad visual de nuestra empresa con un enfoque moderno.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-palette"></i> Diseño</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Local</span>
+                            <span><i class="fas fa-clock"></i> 3 semanas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Campaña de Marketing Digital</h3>
+                        <p>Equipo para lanzar y monitorear una campaña integral de marketing digital para un nuevo producto.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-bullhorn"></i> Marketing</span>
+                            <span><i class="fas fa-globe"></i> Internacional</span>
+                            <span><i class="fas fa-clock"></i> 6 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>IA para Análisis de Datos</h3>
+                        <p>Desarrollo de solución de inteligencia artificial para análisis predictivo de datos empresariales.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-laptop-code"></i> Tecnología</span>
+                            <span><i class="fas fa-globe"></i> Remoto</span>
+                            <span><i class="fas fa-clock"></i> 4 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Plataforma E-commerce</h3>
+                        <p>Creación de tienda online completa con integración de pasarelas de pago y sistema de inventario.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-laptop-code"></i> Tecnología</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Local</span>
+                            <span><i class="fas fa-clock"></i> 3 meses</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6 -->
+                <div class="project-card" onclick="window.location='#';">
+                    <div class="project-image">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Producción de Video Corporativo</h3>
+                        <p>Equipo creativo para producción de serie de videos promocionales para nuestra nueva línea de productos.</p>
+                        <div class="project-meta">
+                            <span><i class="fas fa-photo-video"></i> Multimedia</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Local</span>
+                            <span><i class="fas fa-clock"></i> 1 mes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos de servicio</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Soporte</a>
+            <a href="#">FAQ</a>
+        </div>
+        <p>&copy; 2025 WorkPal. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Simular carga de proyectos con el spinner
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.querySelector('.spinner-container').style.display = 'none';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

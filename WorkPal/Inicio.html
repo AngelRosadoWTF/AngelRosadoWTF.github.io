@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/insignia" rel="stylesheet">
+    <link rel="icon" href="D1.png" type="image/png">
+    <title>¡Bienvenido a WorkPal!</title>
+    <style>
+        /* Reset y estilos generales */
+        @import url('https://fonts.cdnfonts.com/css/insignia');       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Insignia', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        /* Header */
+        header {
+            background-color: #FFB800; /* Amarillo */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #fff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #FFB800;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #000;
+            color: #FFB800;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #000;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background-color: #FFB800;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card h3 {
+            margin: 1rem 0;
+            color: #000;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #FFB800;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #FFB800;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><img src="B1.png" width="250" height="90"></div>
+        <nav>
+            <ul>
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="QuiénesSomos.html">¿Quiénes somos?</a></li>
+                <li><a href="Contactos.html">Contactos</a></li>
+                <li><a href="TusProyectos.html">Tus Proyectos</a></li>
+                <li><a href="InicioSesión.html">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Explota tus habilidades con WorkPal</h1>
+        <p>La plataforma todo en uno para gestionar tus proyectos y equipo de manera eficiente y sencilla.</p>
+        <a href="Búsqueda.html" class="cta-button">Empieza ahora</a>
+    </section>
+    
+    <section class="features">
+        <h2>Nuestras Características</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Gestión de Proyectos</h3>
+                <p>Organiza y sigue el progreso de todos tus proyectos en un solo lugar.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Tareas Colaborativas</h3>
+                <p>Trabaja en equipo asignando y completando tareas de manera eficiente.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Reportes Detallados</h3>
+                <p>Genera reportes personalizados para analizar el rendimiento de tu equipo.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="#">Términos de servicio</a>
+            <a href="#">Privacidad</a>
+            <a href="#">Soporte</a>
+            <a href="#">FAQ</a>
+        </div>
+        <p>&copy; 2025 WorkPal. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
